@@ -36,8 +36,9 @@ class Person(object):
         self.image = self.moving_images[self.image_number]
     
     def move_right(self, step):
-        # Move the person right, along the x axis
-        # Invisible barrier to make it more difficult
+        """Move the person right, along the x axis
+        Invisible barrier to make it more difficult
+        """
         self.x += step
         if self.x > 500:
             self.x = 500
@@ -47,3 +48,28 @@ class Person(object):
             self.image_number = 0
         self.image = self.moving_images[self.image_number]
     
+    # TODO: create the draw method, same as balloon
+    def draw(self):
+        pass
+    # TODO: create an increase_angle method
+    # this method should be called when the user arrows up
+    # 
+
+    # TODO: create a decrease_angle method, when arrow down
+
+    def aim(self):
+        """Assign the aim image
+        """
+        self.image = self.aim_image
+        self.image_number = 0
+        self.fire_image_number = 0
+
+    def fire(self):
+        """assign the fire image, increasing the fire image counter
+        return true when the last image has been loaded
+        """
+
+        #for now assign the first first image and return true
+        self.image = self.fire_images[0] # self.fire_image_number]
+        return True
+

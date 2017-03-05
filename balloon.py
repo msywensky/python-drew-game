@@ -27,7 +27,7 @@ class Balloon(object):
         """for now just return a red balloon.  
         """
         return pg.image.load(path.join('images','balloon-red.png'))
-        
+
 
     def update(self):
         """move the balloon.  The balloon goes up by adding velocity to self.y
@@ -40,8 +40,8 @@ class Balloon(object):
         """
         self.screen.blit(self.image, (self.x, self.y))
 
-    # TODO: create an is_offscreen method (don't forget to pass self)
-    # A balloon is off the screen when it's y coordinate is <= 0
+    def is_offscreen(self):
+        pass 
+    # TODO: A balloon is off the screen when it's y coordinate is <= 0
     # return True if the balloon is off screen
-     
      

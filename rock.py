@@ -21,16 +21,13 @@ class Rock(object):
         """
         return pg.image.load(path.join('images','stone.png'))
         
-    def hit_balloon(self, ba):
-        for i in range(len(ba)):
-#        for b in balloons:
-            print ("i = ", i)
-            b = ba[i]
+    def hit_balloon(self, balloons):
+        print ("length of balloons ", len(balloons))
+        for b in balloons:
             if b.is_hit(self.x,self.y): 
                 print("balloon ", b, " hit")
                 return b
-            else:
-                return None
+        return None
 
     def update(self):
         self.time += .05

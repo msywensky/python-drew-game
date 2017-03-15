@@ -20,6 +20,11 @@ class Person(object):
         self.image = self.moving_images[0]
         self.image_number = 0
 
+        self.fire_images = [pg.image.load(path.join('images','stayattack2.png')),
+            pg.image.load(path.join('images','stayattack3.png')),
+            pg.image.load(path.join('images','stayattack4.png'))]
+        self.fire_image_number = 0
+
         # One image for aiming the slingshot
         self.aim_image = pg.image.load(path.join('images','stayattack1.png'))
 
@@ -29,7 +34,7 @@ class Person(object):
         self.x -= step
         if self.x < 0:
             self.x = 0
-
+     
         self.image_number -= 1
         if self.image_number < 0:
             self.image_number = 3
@@ -48,14 +53,21 @@ class Person(object):
             self.image_number = 0
         self.image = self.moving_images[self.image_number]
     
-    # TODO: create the draw method, same as balloon
     def draw(self):
-        pass
-    # TODO: create an increase_angle method
-    # this method should be called when the user arrows up
-    # 
+        """Add the person to the screen
+        """
+        self.screen.blit(self.image, (self.x, self.y))
 
-    # TODO: create a decrease_angle method, when arrow down
+    def increase_angle(self):
+        """ Dank memes """
+        self.angle += 1
+    
+     
+
+    def decrease_angle(self):
+        """ Danker memes"""
+        self.angle -= 1
+       
 
     def aim(self):
         """Assign the aim image
@@ -69,7 +81,7 @@ class Person(object):
         return true when the last image has been loaded
         """
 
-        #for now assign the first first image and return true
-        self.image = self.fire_images[0] # self.fire_image_number]
+   
+        self.image = self.fire_images[0]
         return True
 

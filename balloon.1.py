@@ -18,7 +18,7 @@ class Balloon(object):
         self.x = random.randint(xLow,xHigh)
         self.y = random.randint(yLow, yHigh)
 
-        self.image  = self.get_balloon_image()
+        self.get_balloon_image = self.image 
 
         self.size = self.image.get_rect().size
 
@@ -32,8 +32,8 @@ class Balloon(object):
     def update(self):
         """move the balloon.  The balloon goes up by adding velocity to self.y
         """
-        
-        self.y += self.velocity
+        pass
+        # TODO: remove pass and add velocity to self.y
 
     def draw(self):
         """Add the balloon to the screen
@@ -41,14 +41,7 @@ class Balloon(object):
         self.screen.blit(self.image, (self.x, self.y))
 
     def is_offscreen(self):
-        if self.y <= 0:
-            return True
-        else:
-            return False
-
-    def is_hit(self, x,y):
-        """Check if x,y point is touching a balloon.  
-        """
-        rect = pg.Rect( (self.x, self.y), self.size )
-        hit = rect.collidepoint(x,y)
-        return hit       
+        pass 
+    # TODO: A balloon is off the screen when it's y coordinate is <= 0
+    # return True if the balloon is off screen
+     

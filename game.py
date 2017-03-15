@@ -2,8 +2,7 @@ import pygame as pg
 import sys
 from os import path
 from person import Person
-# TODO: uncomment when the rock class has been created
-# from rock import Rock
+from rock import Rock
 from balloon import Balloon
 from pygame.locals import Color, KEYUP, KEYDOWN, K_ESCAPE, K_s,\
     K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN
@@ -19,11 +18,12 @@ class Game(object):
         self.frames_per_second = 60
         self.background = pg.image.load(path.join('images','background.png'))
 
-        # TODO: create screen_width and screen_height properties with values 800 and 480
+        self.screen_width = 800 
+        self.screen_height = 480
         self.screen_width = 800
         self.screen_height = 480
-        # TODO: create game_over property, assign False
-        # TODO  create a score property and assign 0
+        self.game_over = False
+        self.score = 0
         self.is_playing = False
 
     def generate_balloons(self):
@@ -31,8 +31,14 @@ class Game(object):
         Given the level property, determine how many balloons to create
         Use a for loop to create balloons and add them to the balloons list
         """
-        pass
-    
+        for i in range(1, self.level+1):
+            self.balloons.append(Balloon(self.screen, 200, 750, 400, 450))
+            
+        
+    def add_rock(self, velocity):
+        rock = Rock (self.screen,self.person.x,self.person.y,self.person.angle,velocity)
+        self.rocks.append(rock)
+
 
     def new_game(self):
         """Starts a new game.  
@@ -42,16 +48,16 @@ class Game(object):
         New balllons for level 1 are created
         """
         self.is_playing = True
-        # TODO: create a rocks list property
-        # TODO: create a balloons list property
-        # TODO: create an initial_angle property and assign 30
-        # TODO: set the game_over property to False
-        # TODO: set the score to 0
-        # TODO: set the level property = 1
+        self.rocks = []
+        self.balloons = [] 
+        self.initial_angle = 30
+        self.game_over = False
+        self.score = 0
+        self.level= 1
 
         self.person = Person(self.screen, (self.screen_width / 3, self.screen_height - 65), self.initial_angle)
 
-        # TODO: generate_balloons for the level      
+        self.generate_balloons()   
 
 
     
@@ -90,7 +96,7 @@ class Game(object):
 
                     # Enter key was pressed, start a new game if not in a game
                     if e.key == K_RETURN:
-                        if self.show_instructions or self.game_over:
+                        if self.game_over:
                             self.is_playing = True
                             self.new_game()
 
@@ -130,12 +136,12 @@ class Game(object):
                     self.person.move_right(4)
 
                 if keys[K_UP]:
-                    pass
-                    # self.person.increase_angle(2)
+                    
+                    self.person.increase_angle(2)
 
                 if keys[K_DOWN]:
-                    pass
-                    # self.person.decrease_angle(2)
+                    
+                    self.person.decrease_angle(2)
 
                 if keys[K_SPACE]:
                     # longer the space bar is held, the faster the rock will be thrown
@@ -145,32 +151,40 @@ class Game(object):
                 for balloon in self.balloons:
                     if not self.game_over:
                         # Update the balloon's coordinates
-                        balloon.update(self.wind)
+                        balloon.update()
 
                         # Game ends when balloon reaches top of screen
                         if balloon.is_offscreen():
                             self.game_over = True
                             self.is_playing = False
-                            self.stop_music()
-
                 if self.is_playing:
                     # Loop through the list of thrown rocks on the screen
                     for rock in self.rocks:
-                        pass
-                        # TODO: once rock class has been created
-                        # Update the rock's coordinates
+                        
+                        rock.update()
+                        # Update the rock's location
                         
 
-                        # remove rocks that fall off the bottom or sides of the screen
-                        # rocks that go straight up (less than 0) are not removed, since they will come down
-                        # TODO: write if statement that checks if either rock.x is greater than screen_width
-                        # or rock.y is greater than screen height
-                        # if true remove from rocks list
+                        # remove rocks that fall off the bottom or sides
+                        # rocks that go straight up (less than 0) are not removed
+                        if rock.x > self.screen_width or rock.y > self.screen_height:
+                            self.rocks.remove(rock)
+                        else:
+                            # Get the balloon that was hit (hopefully) or get None
+                            temp_balloon = rock.hit_balloon(self.balloons)
+                            if temp_balloon == None:
+                                # Rock is still on the screen and did not hit a balloon
+                                rock.draw()
+                            else:
+                                # Rock hit a balloon
+                                # Remove the rock from the Rocks list
+                                self.rocks.remove(rock)
+                                self.balloons.remove(temp_balloon)
+                       
 
-                        # else, check if rock hit balloon
-                        # if it hit a balloon, then remove the rock from the list
-                        # and remove the balloon from the list
-                        # otherwise draw the rock
+                    if len(self.balloons) <= 0:
+                        self.level += 1
+                        self.generate_balloons()
 
 
                     # Add the balloons to the screen
@@ -181,8 +195,8 @@ class Game(object):
                     self.person.draw()
 
             # Add all text to the screen
-            # self.update_text()
-
+            self.screen
+           
             # Redraw the screen to reflect all changes
             pg.display.flip() 
 

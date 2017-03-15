@@ -2,34 +2,41 @@ import pygame as pg
 from os import path
 import math
 
-# TODO: create a Rock class
-# create a constructor 
-# The constructor should have the following parameters
-#   self
-#   screen
-#   angle
-#   velocity
-#   
-# in the constuctor, do the following
-#   save all the parameters to property values
-#   load the stone.png file to the image property
-#   set a time property to 0.0
-#        self.angle = angle / 180.0 * math.pi
-#        self.xVelocity = math.cos(self.angle) * velocity
-#        self.yVelocity = math.sin(self.angle) * velocity
-#  
-# Create a hit_balloon method, with parameters of 
-#   self
-#   balloons list
-# The method will check if the rock hits one of the balloons
-# by traversing the list of balloons and calling the balloon.is_hit method
-# for each balloon
-# if a balloon was hit, return it, otherwise return None
-# 
-# Create an update method, this will move the rock
-#   update the time property by adding .05 to it
-#   use the following values to update the rock
-#        self.x += (self.xVelocity * self.time)
-#        self.y += ((-1.0 * (self.yVelocity * self.time)) + (.5 * self.gravity * (self.time ** 2))) 
-#
-# Create a draw method, using the same code from balloon
+class Rock(object):
+    def __init__(self,screen,x,y,angle,velocity):
+        self.image = self.get_rock_image()
+        self.screen = screen
+        self.angle = angle
+        self.velocity = velocity
+        self.time = 0.0
+        self.angle = angle / 180.0 * math.pi
+        self.yVelocity = math.sin(self.angle) * velocity
+        self.xVelocity = math.cos(self.angle) * velocity
+        self.x = x+30
+        self.y = y+10
+        self.gravity = 9.0
+
+    def get_rock_image(self):
+        """for now just return a rock.  
+        """
+        return pg.image.load(path.join('images','stone.png'))
+        
+    def hit_balloon(self, ba):
+        for i in range(len(ba)):
+#        for b in balloons:
+            print ("i = ", i)
+            b = ba[i]
+            if b.is_hit(self.x,self.y): 
+                print("balloon ", b, " hit")
+                return b
+            else:
+                return None
+
+    def update(self):
+        self.time += .05
+        self.x += (self.xVelocity * self.time)
+        self.y += ((-1.0 * (self.yVelocity * self.time)) + (.5 * self.gravity * (self.time ** 2)))
+    def draw(self):
+        """memes
+        """
+        self.screen.blit(self.image, (self.x, self.y))

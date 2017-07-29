@@ -5,7 +5,7 @@ from person import Person
 from rock import Rock
 from balloon import Balloon
 from pygame.locals import Color, KEYUP, KEYDOWN, K_ESCAPE, K_s,\
-    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN
+    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN 
 
 
 class Game(object):
@@ -17,7 +17,7 @@ class Game(object):
         """
         self.frames_per_second = 60
         self.background = pg.image.load(path.join('images','background.png'))
-
+        self.white = Color("white")
         self.screen_width = 800 
         self.screen_height = 480
         self.screen_width = 800
@@ -25,7 +25,6 @@ class Game(object):
         self.game_over = False
         self.score = 0
         self.is_playing = False
-
     def generate_balloons(self):
         """create balloons for the level
         Given the level property, determine how many balloons to create
@@ -60,7 +59,10 @@ class Game(object):
         self.generate_balloons()   
 
 
-    
+    def write_text(self, text, x, y):
+        label= self.font.render(text, 0, self.white)
+        self.screen.blit(label,(x,y))
+        
     def run_game(self):
         """The method that contains the main loop
         """
@@ -110,7 +112,6 @@ class Game(object):
                     # Complete the throwing sequence
                     if e.key == K_SPACE and self.is_playing:
                         release_slingshot = True
-
             # draw background first
             # this will overwrite everything that was previously on the screen
             # all other items and text will need to be redrawn after this
@@ -137,11 +138,11 @@ class Game(object):
 
                 if keys[K_UP]:
                     
-                    self.person.increase_angle(2)
+                    self.person.increase_angle()
 
                 if keys[K_DOWN]:
                     
-                    self.person.decrease_angle(2)
+                    self.person.decrease_angle()
 
                 if keys[K_SPACE]:
                     # longer the space bar is held, the faster the rock will be thrown
@@ -180,6 +181,7 @@ class Game(object):
                                 # Remove the rock from the Rocks list
                                 self.rocks.remove(rock)
                                 self.balloons.remove(temp_balloon)
+                                self.score += 1
                        
 
                     if len(self.balloons) <= 0:
@@ -196,7 +198,10 @@ class Game(object):
 
             # Add all text to the screen
             self.screen
-           
+            
+            self.write_text("Score:"+ str(self.score), 100 , 100)
+            self.write_text("Level: "+ str(self.level), 100 , 120)
+            self.write_text("Frames per second: "+ str(self.frames_per_second), 100 , 140)
             # Redraw the screen to reflect all changes
             pg.display.flip() 
 

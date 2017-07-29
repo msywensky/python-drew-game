@@ -7,18 +7,18 @@
 Balloon	balloon.1.py	/^class Balloon(object):$/;"	kind:class	line:5
 Balloon	balloon.py	/^class Balloon(object):$/;"	kind:class	line:5
 Balloon	game.py	/^from balloon import Balloon$/;"	kind:namespace	line:6
-Color	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
+Color	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
 Game	game.py	/^class Game(object):$/;"	kind:class	line:11
-KEYDOWN	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-KEYUP	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_DOWN	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_ESCAPE	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_LEFT	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_RETURN	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_RIGHT	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_SPACE	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_UP	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
-K_s	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN$/;"	kind:namespace	line:8
+KEYDOWN	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+KEYUP	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_DOWN	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_ESCAPE	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_LEFT	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_RETURN	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_RIGHT	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_SPACE	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_UP	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
+K_s	game.py	/^    K_LEFT, K_RIGHT, K_UP, K_DOWN, K_SPACE, K_RETURN $/;"	kind:namespace	line:8
 Person	game.py	/^from person import Person$/;"	kind:namespace	line:4
 Person	person.py	/^class Person(object):$/;"	kind:class	line:4
 Rock	game.py	/^from rock import Rock$/;"	kind:namespace	line:5
@@ -28,7 +28,7 @@ __init__	balloon.py	/^    def __init__(self, screen, xLow, xHigh, yLow, yHigh):$
 __init__	game.py	/^    def __init__(self):$/;"	kind:member	line:15
 __init__	person.py	/^    def __init__(self, screen, (x, y), angle):$/;"	kind:member	line:8
 __init__	rock.py	/^    def __init__(self,screen,x,y,angle,velocity):$/;"	kind:member	line:6
-add_rock	game.py	/^    def add_rock(self, velocity):$/;"	kind:member	line:38
+add_rock	game.py	/^    def add_rock(self, velocity):$/;"	kind:member	line:37
 aim	person.py	/^    def aim(self):$/;"	kind:member	line:72
 balloon.1.py	balloon.1.py	1;"	kind:file	line:1
 balloon.py	balloon.py	1;"	kind:file	line:1
@@ -36,11 +36,11 @@ decrease_angle	person.py	/^    def decrease_angle(self):$/;"	kind:member	line:67
 draw	balloon.1.py	/^    def draw(self):$/;"	kind:member	line:38
 draw	balloon.py	/^    def draw(self):$/;"	kind:member	line:38
 draw	person.py	/^    def draw(self):$/;"	kind:member	line:56
-draw	rock.py	/^    def draw(self):$/;"	kind:member	line:37
+draw	rock.py	/^    def draw(self):$/;"	kind:member	line:34
 fire	person.py	/^    def fire(self):$/;"	kind:member	line:79
-game	game.py	/^game = Game()            $/;"	kind:variable	line:198
+game	game.py	/^game = Game()            $/;"	kind:variable	line:208
 game.py	game.py	1;"	kind:file	line:1
-generate_balloons	game.py	/^    def generate_balloons(self):$/;"	kind:member	line:29
+generate_balloons	game.py	/^    def generate_balloons(self):$/;"	kind:member	line:28
 get_balloon_image	balloon.1.py	/^    def get_balloon_image(self):$/;"	kind:member	line:26
 get_balloon_image	balloon.py	/^    def get_balloon_image(self):$/;"	kind:member	line:26
 get_rock_image	rock.py	/^    def get_rock_image(self):$/;"	kind:member	line:19
@@ -54,7 +54,7 @@ math	balloon.py	/^import math, random$/;"	kind:namespace	line:3
 math	rock.py	/^import math$/;"	kind:namespace	line:3
 move_left	person.py	/^    def move_left(self, step):$/;"	kind:member	line:31
 move_right	person.py	/^    def move_right(self, step):$/;"	kind:member	line:43
-new_game	game.py	/^    def new_game(self):$/;"	kind:member	line:43
+new_game	game.py	/^    def new_game(self):$/;"	kind:member	line:42
 path	balloon.1.py	/^from os import path$/;"	kind:namespace	line:2
 path	balloon.py	/^from os import path$/;"	kind:namespace	line:2
 path	game.py	/^from os import path$/;"	kind:namespace	line:3
@@ -69,8 +69,9 @@ pg	rock.py	/^import pygame as pg$/;"	kind:namespace	line:1
 random	balloon.1.py	/^import math, random$/;"	kind:namespace	line:3
 random	balloon.py	/^import math, random$/;"	kind:namespace	line:3
 rock.py	rock.py	1;"	kind:file	line:1
-run_game	game.py	/^    def run_game(self):$/;"	kind:member	line:64
+run_game	game.py	/^    def run_game(self):$/;"	kind:member	line:66
 sys	game.py	/^import sys$/;"	kind:namespace	line:2
 update	balloon.1.py	/^    def update(self):$/;"	kind:member	line:32
 update	balloon.py	/^    def update(self):$/;"	kind:member	line:32
-update	rock.py	/^    def update(self):$/;"	kind:member	line:33
+update	rock.py	/^    def update(self):$/;"	kind:member	line:30
+write_text	game.py	/^    def write_text(self, text, x, y):$/;"	kind:member	line:62

@@ -14,7 +14,7 @@ class Balloon(object):
 
         # Each balloon has a randomized velocity.  
         # It is turned negative to to match the python coordinates
-        self.velocity = (-1) * (random.randrange(30,60,1) / 1000.0)
+        self.velocity = (-1) * (random.randrange(300,600,1) / 1000.0)
         self.x = random.randint(xLow,xHigh)
         self.y = random.randint(yLow, yHigh)
 
